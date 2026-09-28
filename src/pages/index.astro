@@ -12,6 +12,15 @@ import {
   sections,
 } from "../data/site";
 
+// Experience bullets cite papers as {{ref:<id>}}; link each to its entry.
+const pubById = new Map(publications.map((p) => [p.id, p]));
+const cite = (html: string) =>
+  html.replace(/\{\{ref:([\w-]+)\}\}/g, (_, id) => {
+    const p = pubById.get(id);
+    if (!p) throw new Error(`Unknown publication ref: ${id}`);
+    return `<a class="ref" href="#pub-${id}">${p.short ?? p.title}</a>`;
+  });
+
 const title = "Jinho Choi — Mechanistic Interpretability";
 const description =
   "Ph.D. candidate at KAIST and visiting researcher at Helmholtz Munich, working on sparse autoencoders and identifiable sparse dictionary learning.";
@@ -141,7 +150,10 @@ const description =
           <ol class="divide-line border-line divide-y border-t">
             {
               publications.map((p) => (
-                <li class="grid gap-x-6 gap-y-3 py-5 sm:grid-cols-[12rem_1fr]">
+                <li
+                  id={`pub-${p.id}`}
+                  class="pub grid scroll-mt-8 gap-x-6 gap-y-3 py-5 sm:grid-cols-[12rem_1fr]"
+                >
                   <div class="border-line relative aspect-[16/10] w-full max-w-[20rem] overflow-hidden rounded-sm border bg-white sm:max-w-none">
                     {p.teaser ? (
                       <img
@@ -217,7 +229,7 @@ const description =
                     <ul class="text-body mt-3 space-y-2 text-sm leading-relaxed">
                       {e.points.map((pt) => (
                         <li class="before:text-muted relative pl-4 before:absolute before:left-0 before:content-['—']">
-                          <span set:html={pt} />
+                          <span set:html={cite(pt)} />
                         </li>
                       ))}
                     </ul>

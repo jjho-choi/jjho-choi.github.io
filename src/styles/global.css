@@ -98,15 +98,23 @@ body {
   color: var(--color-muted);
 }
 
-/* inline venue tag inside an experience bullet, e.g. <span class="ref">ICLR 2025</span> */
+/* citation from an experience bullet to a publication entry: [PatchSAE] */
 .ref {
+  text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--color-accent);
   white-space: nowrap;
 }
+a.ref:hover { text-decoration: underline; }
 .ref::before { content: "["; }
 .ref::after { content: "]"; }
+
+/* publication entry jumped to from a citation */
+.pub:target {
+  background: var(--color-accent-soft);
+  box-shadow: 0 0 0 0.75rem var(--color-accent-soft);
+}
 
 .rule {
   height: 1px;
