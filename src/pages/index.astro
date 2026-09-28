@@ -1,0 +1,257 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+  profile,
+  about,
+  themes,
+  news,
+  publications,
+  experience,
+  education,
+  service,
+  sections,
+} from "../data/site";
+
+const title = "Jinho Choi — Mechanistic Interpretability";
+const description =
+  "Ph.D. candidate at KAIST and visiting researcher at Helmholtz Munich, working on sparse autoencoders and identifiable sparse dictionary learning.";
+---
+
+<Base title={title} description={description}>
+  <a
+    href="#about"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-3 focus:py-2"
+    >Skip to content</a
+  >
+
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="lg:flex lg:gap-16">
+      <!-- ─── Rail ─────────────────────────────────────────────── -->
+      <header
+        class="pt-12 pb-8 lg:sticky lg:top-0 lg:h-screen lg:w-[19rem] lg:shrink-0 lg:overflow-y-auto lg:py-16"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h1
+              class="font-display text-ink text-[2.6rem] leading-[1.05] font-medium tracking-[-0.015em]"
+            >
+              {profile.name}
+            </h1>
+            <div class="text-muted mt-3 space-y-0.5 text-sm">
+              {profile.roles.map((r) => <p>{r}</p>)}
+              <p class="pt-1">{profile.location}</p>
+            </div>
+          </div>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Toggle dark mode"
+            class="border-line text-muted hover:text-accent hover:border-accent mt-2 shrink-0 cursor-pointer rounded-full border p-2 transition-colors"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </div>
+
+        <p
+          class="border-accent text-ink mt-7 border-l-2 pl-3 text-sm leading-relaxed"
+        >
+          {profile.availability}
+        </p>
+
+        <nav class="mt-8 hidden lg:block" aria-label="Sections">
+          <ul class="space-y-1.5">
+            {
+              sections.map((s) => (
+                <li>
+                  <a href={`#${s.id}`} class="eyebrow hover:text-accent transition-colors">
+                    {s.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <ul class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm lg:flex-col lg:gap-2">
+          <li><a class="link" href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          {
+            profile.links.map((l) => (
+              <li>
+                <a class="link" href={l.href} rel="me noopener">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+          <li><a class="link" href={profile.cv}>Curriculum Vitae (PDF)</a></li>
+        </ul>
+      </header>
+
+      <!-- ─── Content ──────────────────────────────────────────── -->
+      <main class="min-w-0 flex-1 pb-24 lg:py-16">
+        <section id="about" class="scroll-mt-8">
+          <div class="text-body max-w-[62ch] space-y-5">
+            {about.map((p) => <p set:html={p} />)}
+          </div>
+
+          <h2 class="eyebrow mt-12 mb-4">Recent</h2>
+          <ul class="border-line divide-line max-w-[62ch] divide-y border-t border-b">
+            {
+              news.map((n) => (
+                <li class="flex gap-5 py-2.5 text-sm">
+                  <span class="text-muted w-[4.75rem] shrink-0 font-mono text-xs tracking-tight tabular-nums">
+                    {n.date}
+                  </span>
+                  <span class="text-body min-w-0" set:html={n.body} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section id="research" class="mt-16 scroll-mt-8">
+          <h2 class="eyebrow mb-5">Research</h2>
+          <div class="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+            {
+              themes.map((t) => (
+                <article>
+                  <h3 class="font-display text-ink text-xl leading-snug font-medium text-balance">
+                    {t.title}
+                  </h3>
+                  <p class="text-muted mt-2 text-sm leading-relaxed">{t.body}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section id="publications" class="mt-16 scroll-mt-8">
+          <h2 class="eyebrow mb-1">Publications</h2>
+          <p class="text-muted mb-5 flex items-center gap-2 text-sm">
+            <span class="bg-accent inline-block size-[7px] shrink-0"></span>
+            marks work I would point to first.
+          </p>
+          <ol class="divide-line border-line divide-y border-t">
+            {
+              publications.map((p) => (
+                <li class="grid grid-cols-[3.25rem_1fr] gap-x-4 py-4 sm:grid-cols-[4rem_1fr] sm:gap-x-6">
+                  <span class="text-muted pt-[3px] font-mono text-xs tabular-nums">
+                    {p.year}
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="text-ink leading-snug font-medium">
+                      {p.selected && (
+                        <span
+                          class="bg-accent mr-2 inline-block size-[7px] shrink-0 translate-y-[-2px]"
+                          aria-label="Selected"
+                        />
+                      )}
+                      {p.title}
+                    </h3>
+                    <p class="text-muted mt-1 text-sm leading-snug" set:html={p.authors} />
+                    <p class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                      <span
+                        class:list={[
+                          "font-mono tracking-wide",
+                          p.status ? "text-muted" : "text-accent",
+                        ]}
+                      >
+                        {p.venue}
+                      </span>
+                      {p.links?.map((l) => (
+                        <a class="link text-muted font-mono" href={l.href} rel="noopener">
+                          {l.label}
+                        </a>
+                      ))}
+                    </p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </section>
+
+        <section id="experience" class="mt-16 scroll-mt-8">
+          <h2 class="eyebrow mb-5">Experience</h2>
+          <div class="space-y-9">
+            {
+              experience.map((e) => (
+                <article class="grid gap-x-6 gap-y-2 sm:grid-cols-[11rem_1fr]">
+                  <div class="sm:pt-[2px]">
+                    <p class="text-muted font-mono text-xs tabular-nums">{e.period}</p>
+                    <p class="text-muted mt-0.5 font-mono text-xs">{e.place}</p>
+                  </div>
+                  <div class="min-w-0">
+                    <h3 class="font-display text-ink text-xl leading-tight font-medium">
+                      {e.org}
+                    </h3>
+                    <p class="text-muted mt-0.5 text-sm">
+                      {e.role}
+                      {e.unit && <span> · {e.unit}</span>}
+                    </p>
+                    <ul class="text-body mt-3 space-y-2 text-sm leading-relaxed">
+                      {e.points.map((pt) => (
+                        <li class="before:text-muted relative pl-4 before:absolute before:left-0 before:content-['—']">
+                          <span set:html={pt} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section id="education" class="mt-16 scroll-mt-8">
+          <h2 class="eyebrow mb-5">Education</h2>
+          <ul class="divide-line border-line divide-y border-t border-b">
+            {
+              education.map((d) => (
+                <li class="grid gap-x-6 gap-y-1 py-3.5 sm:grid-cols-[11rem_1fr]">
+                  <span class="text-muted font-mono text-xs tabular-nums">{d.period}</span>
+                  <div>
+                    <p class="text-ink font-medium">{d.degree}</p>
+                    <p class="text-muted text-sm">
+                      {d.school}
+                      {d.note && <span> · {d.note}</span>}
+                    </p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+
+          <h2 class="eyebrow mt-10 mb-3">Service</h2>
+          <ul class="text-body text-sm">
+            {
+              service.map((sv) => (
+                <li>
+                  <span class="text-ink font-medium">{sv.label}</span>
+                  <span class="text-muted"> · {sv.body}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <footer class="text-muted mt-16 font-mono text-xs">
+          <hr class="rule mb-4" />
+          <p>
+            Last updated September 2026 · Built with Astro · <a
+              class="link"
+              href={`mailto:${profile.email}`}>{profile.email}</a
+            >
+          </p>
+        </footer>
+      </main>
+    </div>
+  </div>
+</Base>

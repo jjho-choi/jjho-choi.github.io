@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Light is the base palette; dark redefines only the colour tokens.
+   Three viewer states are handled: explicit light, explicit dark,
+   and the un-stamped default that follows the OS.
+   ------------------------------------------------------------------ */
+
+@theme {
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-paper: #f3f5f6;
+  --color-surface: #ffffff;
+  --color-ink: #0f1316;
+  --color-body: #333d45;
+  --color-muted: #66727c;
+  --color-line: #dfe4e8;
+  --color-accent: #146b58;
+  --color-accent-soft: #e2eee9;
+
+  --text-xs: 0.78rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.0625rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-paper: #0d1012;
+    --color-surface: #14181b;
+    --color-ink: #e9edef;
+    --color-body: #c2cbd1;
+    --color-muted: #8b979f;
+    --color-line: #232a2e;
+    --color-accent: #5bd3b2;
+    --color-accent-soft: #16302a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-paper: #0d1012;
+  --color-surface: #14181b;
+  --color-ink: #e9edef;
+  --color-body: #c2cbd1;
+  --color-muted: #8b979f;
+  --color-line: #232a2e;
+  --color-accent: #5bd3b2;
+  --color-accent-soft: #16302a;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Sparse accent: links are quiet until touched. */
+.link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-line);
+  transition: border-color 140ms ease, color 140ms ease;
+}
+.link:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* inline venue tag inside an experience bullet, e.g. <span class="ref">ICLR 2025</span> */
+.ref {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+.ref::before { content: "["; }
+.ref::after { content: "]"; }
+
+.rule {
+  height: 1px;
+  background: var(--color-line);
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
