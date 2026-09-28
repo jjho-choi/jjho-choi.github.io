@@ -141,10 +141,27 @@ const description =
           <ol class="divide-line border-line divide-y border-t">
             {
               publications.map((p) => (
-                <li class="grid grid-cols-[3.25rem_1fr] gap-x-4 py-4 sm:grid-cols-[4rem_1fr] sm:gap-x-6">
-                  <span class="text-muted pt-[3px] font-mono text-xs tabular-nums">
-                    {p.year}
-                  </span>
+                <li class="grid gap-x-6 gap-y-3 py-5 sm:grid-cols-[12rem_1fr]">
+                  <div class="border-line relative aspect-[16/10] w-full max-w-[20rem] overflow-hidden rounded-sm border bg-white sm:max-w-none">
+                    {p.teaser ? (
+                      <img
+                        src={p.teaser}
+                        alt={`Teaser figure for ${p.short ?? p.title}`}
+                        loading="lazy"
+                        decoding="async"
+                        class="size-full object-contain p-1.5"
+                      />
+                    ) : (
+                      <div class="bg-accent-soft flex size-full items-center justify-center p-3">
+                        <span class="font-display text-accent text-center text-lg leading-tight font-medium text-balance">
+                          {p.short ?? p.venue}
+                        </span>
+                      </div>
+                    )}
+                    <span class="bg-surface/90 text-muted absolute bottom-1.5 left-1.5 rounded-sm px-1.5 py-px font-mono text-[0.68rem] tabular-nums">
+                      {p.year}
+                    </span>
+                  </div>
                   <div class="min-w-0">
                     <h3 class="text-ink leading-snug font-medium">
                       {p.selected && (
@@ -156,7 +173,8 @@ const description =
                       {p.title}
                     </h3>
                     <p class="text-muted mt-1 text-sm leading-snug" set:html={p.authors} />
-                    <p class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                    {p.tldr && <p class="text-body mt-2 text-sm leading-relaxed">{p.tldr}</p>}
+                    <p class="mt-2flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
                       <span
                         class:list={[
                           "font-mono tracking-wide",

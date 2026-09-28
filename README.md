@@ -28,7 +28,10 @@ Adding a publication:
   venue: "NeurIPS",
   selected: true,                                        // shows the accent square
   status: "review",                                      // optional: greys the venue tag
-  links: [{ label: "arXiv", href: "https://arxiv.org/abs/…" }],
+  short: "PatchSAE",                                     // placeholder tile text if no teaser
+  teaser: "/teasers/patchsae.gif",                      // file in public/teasers/
+  tldr: "One sentence on what the paper does.",
+  links: [{ label: "pdf", href: "https://arxiv.org/pdf/…" }],
 }
 ```
 
@@ -36,8 +39,8 @@ Adding a publication:
 
 - `src/data/site.ts` → `profile.links`: the **Google Scholar** URL is a
   placeholder — GitHub is set to github.com/jjho-choi.
-- `src/data/site.ts` → publication `links`: only VisualScratchpad has an arXiv link.
-  Add the rest (PatchSAE, ConceptScope, project pages, code).
+- `src/data/site.ts` → publication `links`/`teaser`: pre-arXiv papers have no links
+  yet, and only ConceptScope and PatchSAE have teaser images (the rest show a tile).
 - `public/cv.pdf` is the September 2026 CV; replace it whenever the CV changes.
 - `astro.config.mjs` → `site`: set to your real Pages URL.
 
