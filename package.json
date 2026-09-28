@@ -12,5 +12,8 @@
     "astro": "^5.13.5",
     "playwright": "^1.63.0",
     "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }
