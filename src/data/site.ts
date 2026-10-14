@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 // Everything on the homepage comes from this file. Edit here, rebuild, deploy.
-// Content mirrors cv_2026.tex (September 2026).
+// Content mirrors cv_2026.tex (October 2026).
 // ---------------------------------------------------------------------------
 
 export const profile = {

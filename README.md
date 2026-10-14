@@ -41,7 +41,7 @@ Adding a publication:
   placeholder — GitHub is set to github.com/jjho-choi.
 - `src/data/site.ts` → publication `links`/`teaser`: pre-arXiv papers have no links
   yet; ConSDL has no teaser image (it shows a name tile).
-- `public/cv.pdf` is the September 2026 CV; replace it whenever the CV changes.
+- `public/cv.pdf` is built from `../cv/cv_2026.tex` (`tectonic cv_2026.tex`); copy the new PDF here whenever the CV changes.
 - `astro.config.mjs` → `site`: set to your real Pages URL.
 
 ## Design notes
