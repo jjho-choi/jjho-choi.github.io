@@ -145,37 +145,42 @@ const description =
           <h2 class="eyebrow mb-1">Publications</h2>
           <p class="text-muted mb-5 flex items-center gap-2 text-sm">
             <span class="bg-accent inline-block size-[7px] shrink-0"></span>
-            marks work I would point to first.
+            Selected publications
           </p>
           <ol class="divide-line border-line divide-y border-t">
             {
               publications.map((p) => (
                 <li
                   id={`pub-${p.id}`}
-                  class="pub grid scroll-mt-8 gap-x-6 gap-y-3 py-5 sm:grid-cols-[12rem_1fr]"
+                  class="pub grid scroll-mt-8 grid-cols-[100px_1fr] items-start gap-x-4 py-6 sm:grid-cols-[200px_1fr] sm:gap-x-7"
                 >
-                  <div class="border-line relative aspect-[16/10] w-full max-w-[20rem] overflow-hidden rounded-sm border bg-white sm:max-w-none">
+                  <div class="w-[100px] overflow-hidden rounded sm:w-[200px]">
                     {p.teaser ? (
                       <img
                         src={p.teaser}
-                        alt={`Teaser figure for ${p.short ?? p.title}`}
+                        alt=""
                         loading="lazy"
                         decoding="async"
-                        class="size-full object-contain p-1.5"
+                        class="border-line block h-auto w-full rounded border"
                       />
                     ) : (
-                      <div class="bg-accent-soft flex size-full items-center justify-center p-3">
-                        <span class="font-display text-accent text-center text-lg leading-tight font-medium text-balance">
+                      <div class="bg-accent-soft flex h-[70px] w-full items-center justify-center p-2 sm:h-[125px]">
+                        <span class="font-display text-accent text-center text-sm leading-tight font-medium text-balance sm:text-lg">
                           {p.short ?? p.venue}
                         </span>
                       </div>
                     )}
-                    <span class="bg-surface/90 text-muted absolute bottom-1.5 left-1.5 rounded-sm px-1.5 py-px font-mono text-[0.68rem] tabular-nums">
-                      {p.year}
-                    </span>
                   </div>
                   <div class="min-w-0">
-                    <h3 class="text-ink leading-snug font-medium">
+                    <p
+                      class:list={[
+                        "font-mono text-xs tracking-wide",
+                        p.status ? "text-muted" : "text-accent",
+                      ]}
+                    >
+                      {p.venue}
+                    </p>
+                    <h3 class="text-ink mt-1 leading-snug font-semibold">
                       {p.selected && (
                         <span
                           class="bg-accent mr-2 inline-block size-[7px] shrink-0 translate-y-[-2px]"
@@ -186,21 +191,17 @@ const description =
                     </h3>
                     <p class="text-muted mt-1 text-sm leading-snug" set:html={p.authors} />
                     {p.tldr && <p class="text-body mt-2 text-sm leading-relaxed">{p.tldr}</p>}
-                    <p class="mt-2flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
-                      <span
-                        class:list={[
-                          "font-mono tracking-wide",
-                          p.status ? "text-muted" : "text-accent",
-                        ]}
-                      >
-                        {p.venue}
-                      </span>
-                      {p.links?.map((l) => (
-                        <a class="link text-muted font-mono" href={l.href} rel="noopener">
-                          {l.label}
-                        </a>
-                      ))}
-                    </p>
+                    {p.links && (
+                      <ul class="mt-3 flex flex-wrap gap-1.5">
+                        {p.links.map((l) => (
+                          <li>
+                            <a class="pill" href={l.href} rel="noopener">
+                              {l.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </li>
               ))
@@ -220,7 +221,13 @@ const description =
                   </div>
                   <div class="min-w-0">
                     <h3 class="font-display text-ink text-xl leading-tight font-medium">
-                      {e.org}
+                      {e.url ? (
+                        <a class="link" href={e.url} rel="noopener">
+                          {e.org}
+                        </a>
+                      ) : (
+                        e.org
+                      )}
                     </h3>
                     <p class="text-muted mt-0.5 text-sm">
                       {e.role}

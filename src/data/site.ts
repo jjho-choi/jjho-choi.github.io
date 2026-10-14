@@ -6,17 +6,18 @@
 export const profile = {
   name: "Jinho Choi",
   roles: [
-    "Ph.D. Candidate, KAIST AI",
+    "Ph.D. Candidate, KAIST",
     "Visiting Researcher, Helmholtz Munich",
   ],
   location: "Munich, Germany",
-  availability:
-    "Open to research internships and collaborations in the Munich area.",
+  availability: "Open to research collaborations and internships.",
   email: "jjho.choi@gmail.com",
   cv: "/cv.pdf",
   links: [
-    // TODO: paste your Google Scholar profile URL
-    { label: "Google Scholar", href: "https://scholar.google.com/" },
+    {
+      label: "Google Scholar",
+      href: "https://scholar.google.com/citations?user=4cz0fdoAAAAJ&hl=en",
+    },
     { label: "GitHub", href: "https://github.com/jjho-choi" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/jinhochoi94" },
   ],
@@ -24,61 +25,52 @@ export const profile = {
 
 export const about = [
   `I am a Ph.D. candidate at KAIST and a visiting researcher at Helmholtz
-   Munich, working toward <strong>safe and trustworthy AI</strong> through
-   <strong>mechanistic interpretability</strong> and
-   <strong>data-centric AI</strong>: making the concepts inside foundation
-   models explicit and reproducible, and tracing model behavior back to the
-   data it was trained on.`,
-  `In my Ph.D. I use sparse dictionary learning to open up vision foundation
-   models. With <a class="link" href="#pub-patchsae">PatchSAE</a> I trained
-   sparse autoencoders on the CLIP vision transformer and found that adapting
-   the model to a new task mostly remaps concepts it already has rather than
-   learning new ones. <a class="link" href="#pub-conceptscope">ConceptScope</a>
-   turns the same lens on the data, breaking image datasets into interpretable
-   concepts to expose biases no one had reported, and
-   <a class="link" href="#pub-visualscratchpad">VisualScratchpad</a> carries
-   concept analysis into large vision–language models at inference time. Most
-   recently I have been making the extracted concepts themselves reliable, so
-   that analyses built on them hold up from one training run to the next.`,
-  `I have also spent five years as an AI scientist at two startups, taking
-   models from research prototype to deployed product. At
-   <strong>Tomocube</strong> (2019–2022) I built 3D segmentation models for
-   label-free holotomography of live cells that shipped in the company's
-   commercial analysis software, plus a human-in-the-loop annotation tool that
-   became its in-house labeling system. At <strong>Genesislab</strong>
-   (2022–2024) I built the fairness pipeline for an AI video-interview product
-   used by 150+ companies, cutting gender bias by 35% with no loss in accuracy;
-   developed the talking-face avatar that serves as its AI interviewer; and
-   built LLM conversational agents for a creator-persona app with 500K+
-   downloads.`,
-  `During my M.S. at Korea University I worked where machine learning meets
-   human–computer interaction: topic models and visual analytics that detect
-   and explain local events in social media streams
-   (<a class="link" href="#pub-stexnmf">STExNMF</a>,
-   <a class="link" href="#pub-topicontiles">TopicOnTiles</a>), and making
-   charts accessible to people with visual impairments
-   (<a class="link" href="#pub-non-visual">Visualizing for the Non-Visual</a>).`,
+   Munich. My research focuses on <strong>mechanistic interpretability</strong>
+   and <strong>data-centric AI</strong> to advance <strong>safe and
+   trustworthy AI</strong>.`,
+  `My Ph.D. research uses <strong>sparse dictionary learning</strong> to
+   uncover human-interpretable concepts in foundation models. My work
+   includes interpreting vision models
+   (<a class="link" href="#pub-patchsae">PatchSAE</a>), uncovering dataset
+   biases (<a class="link" href="#pub-conceptscope">ConceptScope</a>), and
+   analyzing vision-language models
+   (<a class="link" href="#pub-visualscratchpad">VisualScratchpad</a>). More
+   recently, I developed
+   <a class="link" href="#pub-consdl">ConSDL</a> to improve the consistency
+   of learned concepts across training runs.`,
+  `I also spent five years in industry as an AI scientist, developing
+   biomedical imaging models at
+   <a class="link" href="https://www.tomocube.com/" rel="noopener"><strong>Tomocube</strong></a>
+   and AI interview systems and conversational agents at
+   <a class="link" href="https://genesislab.ai/en/" rel="noopener"><strong>Genesislab</strong></a>.`,
+  `During my M.S. at Korea University, I worked on <strong>visual
+   analytics</strong> and <strong>human-computer interaction (HCI)</strong>.`,
 ];
 
 export const themes = [
   {
     title: "Mechanistic interpretability",
-    body: `Sparse dictionary learning for reproducible concept discovery in
-           foundation models.`,
+    body: `Discovering interpretable and reproducible concepts in foundation
+           models through sparse dictionary learning.`,
   },
   {
-    title: "Safety & trustworthy AI",
-    body: `Fairness diagnosis and mitigation, and concept-level auditing of
-           model behavior.`,
+    title: "Trustworthy AI",
+    body: `Understanding and mitigating model biases through interpretable
+           representations and fairness-aware learning.`,
   },
   {
     title: "Data-centric AI",
-    body: `Characterizing dataset bias through model internals, and
-           human-in-the-loop annotation.`,
+    body: `Understanding and improving datasets through concept-based analysis
+           and human-in-the-loop annotation.`,
   },
 ];
 
 export const news = [
+  {
+    date: "Oct 2026",
+    body: `Released <em>ConSDL</em>, a sparse coding approach for consistent
+           concept discovery in foundation models.`,
+  },
   {
     date: "Apr 2026",
     body: `<em>VisualScratchpad</em> presented at the
@@ -86,8 +78,8 @@ export const news = [
   },
   {
     date: "Feb 2026",
-    body: `Started as a visiting researcher at <strong>Helmholtz Munich</strong>
-           (Dynamical Inference Lab, PI: Steffen Schneider).`,
+    body: `Joined the Dynamical Inference Lab at <strong>Helmholtz Munich</strong>
+           as a visiting researcher.`,
   },
   {
     date: "Sep 2025",
@@ -118,15 +110,15 @@ export type Pub = {
 };
 
 // `authors`: wrap your own name in <b> so it reads at a glance.
-// `teaser`: drop an image in public/teasers/ (≈16:10 works best; wide figures
-// are letterboxed, never cropped).
+// `teaser`: drop an image in public/teasers/. It is shown whole at 200px wide,
+// so wide figures come out short; landscape around 16:9 reads best.
 export const publications: Pub[] = [
   {
     id: "consdl",
     year: "2026",
     title: "Beyond SAEs: Consistent Concept Discovery with Sparse Coding",
     short: "ConSDL",
-    tldr: "Replaces sparse autoencoders with sparse coding so the concepts extracted from a model come out the same, run after run.",
+    tldr: "Uses sparse coding to learn more consistent and reproducible concepts across independent training runs.",
     authors: "<b>Jinho Choi</b>, Hyesu Lim, Jaegul Choo, Steffen Schneider",
     venue: "Under review",
     status: "review",
@@ -137,13 +129,17 @@ export const publications: Pub[] = [
     year: "2026",
     title: "VisualScratchpad: Grounding Visual Concepts in Large Vision Language Models",
     short: "VisualScratchpad",
-    tldr: "Grounds visual concepts inside large vision–language models at inference time, showing what the model looks at when it answers.",
+    teaser: "/teasers/visual-scratchpad.jpg",
+    tldr: "Enables concept-level interpretation of large vision-language models during inference.",
     authors:
       "Hyesu Lim, <b>Jinho Choi</b>, Taekyung Kim, Byeongho Heo, Jaegul Choo, Dongyoon Han",
     venue: "ICLR 2026 Workshop on Trustworthy AI",
     selected: true,
     links: [
-      { label: "paper", href: "https://arxiv.org/abs/2603.07335" },
+      { label: "pdf", href: "https://arxiv.org/abs/2603.07335" },
+      { label: "code", href: "https://github.com/hyesulim/visual_scratchpad" },
+      { label: "project", href: "https://hyesulim.github.io/visual_scratchpad_projectpage/" },
+      { label: "poster", href: "https://drive.google.com/file/d/1oTAPWNi04LIbnbd8YwJfbJxeECMJurjE/view?usp=sharing" },
     ],
   },
   {
@@ -152,14 +148,15 @@ export const publications: Pub[] = [
     title: "ConceptScope: Characterizing Dataset Bias via Disentangled Visual Concepts",
     short: "ConceptScope",
     teaser: "/teasers/conceptscope.jpg",
-    tldr: "Breaks image datasets into interpretable visual concepts and measures how each spreads across classes, surfacing previously unreported biases.",
+    tldr: "Analyzes image datasets through interpretable visual concepts to uncover previously overlooked biases.",
     authors: "<b>Jinho Choi</b>, Hyesu Lim, Steffen Schneider, Jaegul Choo",
     venue: "NeurIPS 2025",
     selected: true,
     links: [
-      { label: "paper", href: "https://arxiv.org/abs/2510.26186" },
+      { label: "pdf", href: "https://arxiv.org/abs/2510.26186" },
       { label: "code", href: "https://github.com/jjho-choi/ConceptScope" },
-      { label: "project page", href: "https://jjho-choi.github.io/ConcepScope-projectpage/" },
+      { label: "project", href: "https://jjho-choi.github.io/ConcepScope-projectpage/" },
+      { label: "poster & video", href: "https://neurips.cc/virtual/2025/loc/san-diego/poster/116263" },
     ],
   },
   {
@@ -168,15 +165,16 @@ export const publications: Pub[] = [
     title:
       "Sparse Autoencoders Reveal Selective Remapping of Visual Concepts During Adaptation",
     short: "PatchSAE",
-    teaser: "/teasers/patchsae.png",
-    tldr: "A patch-level sparse autoencoder on CLIP shows that adaptation mostly remaps existing visual concepts rather than learning new ones.",
+    teaser: "/teasers/patchsae.jpg",
+    tldr: "Reveals that adapting vision models primarily remaps existing visual concepts rather than learning new ones.",
     authors: "Hyesu Lim, <b>Jinho Choi</b>, Jaegul Choo, Steffen Schneider",
     venue: "ICLR 2025",
     selected: true,
     links: [
-      { label: "paper", href: "https://arxiv.org/abs/2412.05276" },
+      { label: "pdf", href: "https://arxiv.org/abs/2412.05276" },
       { label: "code", href: "https://github.com/dynamical-inference/patchsae" },
-      { label: "project page", href: "https://dynamical-inference.ai/patchsae/" },
+      { label: "project", href: "https://dynamical-inference.ai/patchsae/" },
+      { label: "poster & video", href: "https://iclr.cc/virtual/2025/poster/28675" },
     ],
   },
   {
@@ -185,19 +183,23 @@ export const publications: Pub[] = [
     title:
       "Slice and Conquer: A Planar-to-3D Framework for Efficient Interactive Segmentation of Volumetric Images",
     short: "Slice & Conquer",
-    tldr: "Lifts a few labeled 2D slices into full 3D masks and asks for correction only where the model is uncertain, speeding up volumetric annotation.",
+    teaser: "/teasers/slice-conquer.jpg",
+    tldr: "Enables efficient 3D image annotation by propagating sparse 2D labels and selectively requesting corrections.",
     authors:
       "Wonwoo Cho, Dongmin Choi, Hyesu Lim, <b>Jinho Choi</b>, Saemee Choi, Hyun-seok Min, Sungbin Lim, Jaegul Choo",
     venue: "WACV 2024",
+    links: [{ label: "pdf", href: "https://openaccess.thecvf.com/content/WACV2024/papers/Cho_Slice_and_Conquer_A_Planar-to-3D_Framework_for_Efficient_Interactive_Segmentation_WACV_2024_paper.pdf" }],
   },
   {
     id: "fair-avi",
     year: "2023",
     title: "Fairness-aware Multimodal Learning in Automatic Video Interview Assessment",
     short: "Fair AVI",
-    tldr: "Diagnoses and mitigates demographic bias in multimodal video-interview scoring without giving up accuracy.",
+    teaser: "/teasers/fair-avi.jpg",
+    tldr: "Reduces demographic bias in AI video-interview assessment while preserving predictive accuracy.",
     authors: "Changwoo Kim, <b>Jinho Choi</b>, Jongyeon Yoon, Daehun Yoo, Woojin Lee",
     venue: "IEEE Access 2023",
+    links: [{ label: "pdf", href: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10287972" }],
   },
   {
     id: "label-free-3d",
@@ -205,20 +207,24 @@ export const publications: Pub[] = [
     title:
       "Label-free Three-dimensional Analyses of Live Cells with Deep-learning-based Segmentation Exploiting Refractive Index Distributions",
     short: "Label-free 3D",
-    tldr: "Segments organelles and whole cells in 3D from refractive-index tomograms of live cells, with no fluorescent labeling.",
+    teaser: "/teasers/label-free-3d.jpg",
+    tldr: "Enables 3D segmentation of live cells and cellular structures from label-free refractive-index images.",
     authors: "<b>Jinho Choi</b>, Hye-Jin Kim, et al.",
     venue: "bioRxiv 2021",
     status: "preprint",
+    links: [{ label: "pdf", href: "https://www.biorxiv.org/content/biorxiv/early/2021/05/23/2021.05.23.445351.full.pdf" }],
   },
   {
     id: "cell-instance",
     year: "2021",
     title: "3D Cell Instance Segmentation via Point Proposals using Cellular Components",
     short: "3D Cell Inst.",
-    tldr: "Separates touching cells in 3D microscopy volumes by proposing cell points from their cellular components.",
+    teaser: "/teasers/cell-instance.jpg",
+    tldr: "Separates individual cells in 3D microscopy images using point proposals derived from cellular components.",
     authors:
       "<b>Jinho Choi</b>, Junwoo Park, Hyun-seok Min, Hyungjoo Cho, Sungbin Lim, Jaegul Choo",
     venue: "SPIE 2021",
+    links: [{ label: "pdf", href: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11647/116471G/3D-cell-instance-segmentation-via-point-proposals-using-cellular-components/10.1117/12.2581796.short" }],
   },
   {
     id: "non-visual",
@@ -226,10 +232,12 @@ export const publications: Pub[] = [
     title:
       "Visualizing for the Non-Visual: Enabling the Visually Impaired to Use Visualization",
     short: "Non-Visual Vis",
-    tldr: "Extracts the underlying data from chart images so screen-reader users can explore visualizations.",
+    teaser: "/teasers/non-visual.jpg",
+    tldr: "Makes chart information accessible to people with visual impairments through data extraction and interactive exploration.",
     authors:
       "<b>Jinho Choi</b>, Sanghun Jung, Deokgun Park, Jaegul Choo, Niklas Elmqvist",
     venue: "Computer Graphics Forum (EuroVis) 2019",
+    links: [{ label: "pdf", href: "https://users.umiacs.umd.edu/~elm/projects/vis4nonvisual/vis4nonvisual.pdf" }],
   },
   {
     id: "topicontiles",
@@ -237,9 +245,11 @@ export const publications: Pub[] = [
     title:
       "TopicOnTiles: Tile-based Spatio-Temporal Event Analytics via Exclusive Topic Modeling on Social Media",
     short: "TopicOnTiles",
-    tldr: "Tile-based visual analytics that surfaces local events in social media through spatio-temporally exclusive topics.",
+    teaser: "/teasers/topicontiles.jpg",
+    tldr: "Supports exploration of local events in social media through spatio-temporal topic modeling and visual analytics.",
     authors: "Minsuk Choi, Sungbok Shin, <b>Jinho Choi</b>, et al.",
     venue: "CHI 2018",
+    links: [{ label: "pdf", href: "https://www.osti.gov/servlets/purl/1470894" }],
   },
   {
     id: "stexnmf",
@@ -247,86 +257,95 @@ export const publications: Pub[] = [
     title:
       "STExNMF: Spatio-Temporally Exclusive Topic Discovery for Anomalous Event Detection",
     short: "STExNMF",
-    tldr: "A non-negative matrix factorization that finds topics exclusive in space and time to flag anomalous events in social media.",
+    teaser: "/teasers/stexnmf.jpg",
+    tldr: "Discovers location- and time-specific topics to detect anomalous events in social media.",
     authors: "Sungbok Shin, Minsuk Choi, <b>Jinho Choi</b>, et al.",
     venue: "IEEE ICDM 2017",
+    links: [{ label: "pdf", href: "https://www.osti.gov/servlets/purl/1426578" }],
   },
 ];
 
 export const experience = [
   {
     org: "Helmholtz Munich",
-    unit: "Dynamical Inference Lab (PI: Steffen Schneider), joint project with KAIST DAVIAN Lab",
+    unit: "Dynamical Inference Lab",
     role: "Visiting Researcher",
     period: "Feb 2026 — Present",
     place: "Munich, Germany",
     points: [
-      `Developed <b>ConSDL</b>, which extracts the concepts a model has learned
-       reproducibly. With sparse autoencoders, the standard tool, two training
-       runs can disagree on what the concepts are, undermining any analysis
-       built on them. ConSDL recovers the same concepts run after run and is
-       the most consistent method on vision and language models
+      `Developed <b>ConSDL</b>, a sparse coding approach that improves the
+       consistency of learned concepts across independent training runs.
+       Demonstrated improved dictionary and coefficient consistency over six
+       sparse autoencoder baselines on vision and language models
        {{ref:consdl}}.`,
     ],
   },
   {
-    org: "KAIST, DAVIAN Lab",
-    unit: "",
+    org: "KAIST",
+    unit: "DAVIAN Lab",
     role: "Ph.D. Researcher",
     period: "Aug 2022 — Present",
     place: "Daejeon, Korea",
     points: [
-      `Developed <b>ConceptScope</b>, which breaks a dataset into
-       human-interpretable visual concepts and measures how each concept
-       distributes across classes, uncovering many previously unreported biases
-       in real-world image datasets {{ref:conceptscope}}.`,
-      `Trained sparse autoencoders on the CLIP vision transformer
-       (<b>PatchSAE</b>), discovering 49K localized visual concepts that explain
-       how the model reaches its predictions and how that changes under
-       adaptation to new tasks {{ref:patchsae}}. Extended the
-       analysis to large vision–language models, grounding visual concepts at
-       inference time (<b>VisualScratchpad</b>)
+      `Developed <b>ConceptScope</b> to characterize image datasets through
+       interpretable visual concepts, revealing previously overlooked dataset
+       biases {{ref:conceptscope}}.`,
+      `Applied sparse autoencoders to CLIP (<b>PatchSAE</b>) to study visual
+       concept representations and their changes during task adaptation
+       {{ref:patchsae}}. Extended concept-level analysis to large
+       vision-language models with <b>VisualScratchpad</b>
        {{ref:visualscratchpad}}.`,
     ],
   },
   {
     org: "Genesislab",
+    url: "https://genesislab.ai/en/",
     unit: "",
     role: "AI Scientist",
     period: "Sep 2022 — Nov 2024",
     place: "Seoul, Korea",
     points: [
-      `Built the <b>fairness pipeline</b> for <b>viewinterHR</b>, a video
-       interview assessment product used by 150+ companies: a diagnosis stage
-       that quantifies how sensitive and nuisance attributes affect outcomes,
-       and a mitigation algorithm that reduces group disparity in features and
-       outputs, cutting gender bias by 35% with no loss in accuracy
-       {{ref:fair-avi}}.`,
-      `Developed a <b>talking-face generation</b> method with accurate lip-sync
-       and high video clarity, deployed as the AI interviewer avatar in
-       <b>viewinterHR</b>. Worked with HR experts to ensure the generated
-       interviewer reflected real interview dynamics.`,
-      `Built the <b>conversational agents</b> behind <b>Zuicy</b>, LLM personas
-       of YouTube creators (500K+ downloads), using prompt chaining,
-       retrieval-augmented generation, and memory recall, plus an automated
-       pipeline for building each creator persona.`,
+      `Developed a <b>fairness diagnosis and mitigation pipeline</b> for an AI
+       video-interview platform used by 150+ companies, reducing gender bias by
+       35% without sacrificing accuracy {{ref:fair-avi}}.`,
+      `Developed a <b>talking-face generation</b> model deployed as an AI
+       interviewer avatar, with accurate lip synchronization and high visual
+       quality.`,
+      `Built <b>LLM-based conversational agents</b> for a creator-persona app
+       with 500K+ downloads, using retrieval-augmented generation, memory, and
+       automated persona construction.`,
     ],
   },
   {
     org: "Tomocube",
+    url: "https://www.tomocube.com/",
     unit: "",
     role: "AI Researcher",
     period: "Feb 2019 — Sep 2022",
     place: "Seoul, Korea",
     points: [
-      `Developed <b>3D cell segmentation</b> models for four organelle types and
-       cell instances from label-free refractive index images, achieving
-       state-of-the-art accuracy, and integrated them into commercial cell
-       analysis software {{ref:cell-instance}} {{ref:label-free-3d}}.`,
-      `Built a <b>human-in-the-loop segmentation</b> model that lifts labeled 2D
-       slices to 3D masks and actively requests correction on uncertain slices,
-       improving annotation speed and accuracy by 9.5% and serving as the
-       in-house annotation system {{ref:slice-conquer}}.`,
+      `Developed <b>3D cell and organelle segmentation</b> models for
+       label-free holotomography, integrated into commercial cell analysis
+       software {{ref:cell-instance}} {{ref:label-free-3d}}.`,
+      `Built a <b>human-in-the-loop 3D annotation system</b> that propagates 2D
+       labels into 3D and requests corrections on uncertain slices, and
+       deployed it as the company's internal annotation system
+       {{ref:slice-conquer}}.`,
+    ],
+  },
+  {
+    org: "Korea University",
+    unit: "",
+    role: "M.S. Researcher",
+    period: "Mar 2017 — Aug 2019",
+    place: "Seoul, Korea",
+    points: [
+      `Developed a <b>chart accessibility tool</b> that extracts data from
+       web-based visualizations and makes it accessible to visually impaired
+       users through screen readers {{ref:non-visual}}.`,
+      `Developed <b>visual analytics systems</b> for detecting anomalous local
+       events in geo-tagged social media using topic modeling and interactive
+       map visualizations {{ref:stexnmf}} {{ref:topicontiles}}.`,
     ],
   },
 ];

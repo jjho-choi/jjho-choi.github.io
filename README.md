@@ -29,7 +29,7 @@ Adding a publication:
   selected: true,                                        // shows the accent square
   status: "review",                                      // optional: greys the venue tag
   short: "PatchSAE",                                     // placeholder tile text if no teaser
-  teaser: "/teasers/patchsae.gif",                      // file in public/teasers/
+  teaser: "/teasers/patchsae.jpg",                      // public/teasers/, shown whole at 200px wide
   tldr: "One sentence on what the paper does.",
   links: [{ label: "pdf", href: "https://arxiv.org/pdf/…" }],
 }
@@ -40,7 +40,7 @@ Adding a publication:
 - `src/data/site.ts` → `profile.links`: the **Google Scholar** URL is a
   placeholder — GitHub is set to github.com/jjho-choi.
 - `src/data/site.ts` → publication `links`/`teaser`: pre-arXiv papers have no links
-  yet, and only ConceptScope and PatchSAE have teaser images (the rest show a tile).
+  yet; ConSDL has no teaser image (it shows a name tile).
 - `public/cv.pdf` is the September 2026 CV; replace it whenever the CV changes.
 - `astro.config.mjs` → `site`: set to your real Pages URL.
 
