@@ -77,7 +77,7 @@ export const news = [
            <strong>ICLR 2026 Workshop on Trustworthy AI</strong>.`,
   },
   {
-    date: "Feb 2026",
+    date: "Mar 2026",
     body: `Joined the Dynamical Inference Lab at <strong>Helmholtz Munich</strong>
            as a visiting researcher.`,
   },
@@ -271,7 +271,7 @@ export const experience = [
     org: "Helmholtz Munich",
     unit: "Dynamical Inference Lab",
     role: "Visiting Researcher",
-    period: "Feb 2026 — Present",
+    period: "Mar 2026 — Present",
     place: "Munich, Germany",
     points: [
       `Developed <b>ConSDL</b>, a sparse coding approach that improves the
