@@ -43,8 +43,8 @@ export const about = [
    <a class="link" href="https://www.tomocube.com/" rel="noopener"><strong>Tomocube</strong></a>
    and AI interview systems and conversational agents at
    <a class="link" href="https://genesislab.ai/en/" rel="noopener"><strong>Genesislab</strong></a>.`,
-  `During my M.S. at Korea University, I worked on <strong>visual
-   analytics</strong> and <strong>human-computer interaction (HCI)</strong>.`,
+  `During my M.S. at Korea University, I worked on visual analytics
+   and human-computer interaction (HCI).`,
 ];
 
 export const themes = [
