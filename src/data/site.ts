@@ -118,6 +118,7 @@ export const publications: Pub[] = [
     year: "2026",
     title: "Beyond SAEs: Consistent Concept Discovery with Sparse Coding",
     short: "ConSDL",
+    teaser: "/teasers/consdl.jpg",
     tldr: "Uses sparse coding to learn more consistent and reproducible concepts across independent training runs.",
     authors: "<b>Jinho Choi</b>, Hyesu Lim, Jaegul Choo, Steffen Schneider",
     venue: "Under review",
